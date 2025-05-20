@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Remera Adidas",
+    "description": "Remera de verano",
+    "price": 200,
+    "thumbnail": "",
+    "code": "Agn234",
+    "stock": 10
+  },
+  {
+    "id": 2,
+    "title": "Buzo rojo",
+    "description": "Buzo de invierno"
+  }
+]
