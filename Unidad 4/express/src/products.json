@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Campera de lluvia v2",
+    "description": "Campera impermeable",
+    "code": "GHT123",
+    "price": 200,
+    "stock": 10
+  },
+  {
+    "id": 2,
+    "title": "Campera de invierno",
+    "description": "Campera invernal",
+    "code": "GUT123",
+    "price": 300,
+    "stock": 2
+  }
+]
