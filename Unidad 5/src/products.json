@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Campera de lluvia v2",
+    "price": 200,
+    "thumbnail": ""
+  },
+  {
+    "id": 2,
+    "title": "Campera de invierno",
+    "price": 300,
+    "thumbnail": ""
+  },
+  {
+    "id": 3,
+    "title": "Buzo de invierno",
+    "price": 2000,
+    "thumbnail": ""
+  },
+  {
+    "id": 4,
+    "title": "Remera roja",
+    "price": 10,
+    "thumbnail": "/img/1748913864275-dog.jpg"
+  }
+]

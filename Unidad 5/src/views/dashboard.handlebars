@@ -1,0 +1,29 @@
+<h1>Dashboard</h1>
+
+<div>
+  <form action="http://localhost:8080/api/products" method="POST" enctype="multipart/form-data">
+    <input type="text" name="title" placeholder="nombre del producto">
+    <input type="text" name="price" placeholder="precio del producto">
+    <input type="file" name="file">
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+
+{{#each products}}
+  <li>
+    <h2>{{this.title}}</h2>
+    <h3>Precio: {{this.price}}</h3>
+    <img src={{this.thumbnail}} alt="">
+  </li>
+{{/each}}
+
+{{#with user}}
+  <h2>{{username}}</h2>
+
+  {{#if isAdmin}}
+    <h3>permisos de administrador</h3>
+  {{else}}
+    <h3>no tienes permisos de administrador</h3>
+  {{/if}}
+
+{{/with}}
