@@ -1,0 +1,59 @@
+<div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 my-1">
+  <div class="card shadow-lg p-4 rounded w-100 d-flex flex-column" style="max-width: 400px; height: 95vh;">
+
+    <!-- Logo -->
+    <img class="w-50 align-self-center" src="https://thumbs.dreamstime.com/b/msn-messenger-logo-129294088.jpg" alt="logo msn">
+
+    <!-- Form con inputs -->
+    <form id="formChat" class="mt-3 d-flex flex-column">
+      <!-- Nombre de usuario -->
+      <input type="text" id="inputUsername" class="form-control mb-2" placeholder="Nombre de usuario" required>
+
+      <!-- Mensaje + botón -->
+      <div class="input-group">
+        <input type="text" id="inputChat" class="form-control" placeholder="Ingrese su mensaje..." required>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+    </form>
+
+    <!-- Chatbox ocupa todo el espacio restante y queda abajo -->
+    <div id="chatBox" class="mt-3 border rounded p-2 overflow-auto bg-light d-flex flex-column flex-grow-1">
+    </div>
+
+  </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  //websockets desde el cliente
+  const socket = io();
+
+  //capturamos el historial de mensajes
+  socket.on("message history", (messages)=> {
+    const chatBox = document.getElementById("chatBox");
+
+    messages.forEach((dataMessage)=> {
+      chatBox.innerHTML += `<p>${dataMessage.username} - ${dataMessage.newMessage}</p>`;
+    });
+  });
+
+  //formulario
+  const formChat = document.getElementById("formChat");
+  const inputChat = document.getElementById("inputChat");
+  const inputUsername = document.getElementById("inputUsername");
+
+  formChat.addEventListener("submit", (event)=> {
+    event.preventDefault();
+
+    const username = inputUsername.value;
+    const message = inputChat.value;
+    //emitimos un evento desde el cliente al servidor
+    socket.emit("new message", { newMessage: message, username });
+  });
+
+  //capturamos los nuevos mensajes
+  socket.on("broadcast new message", (dataMessage)=> {
+    //insertar el nuevo mensaje en el html
+    const chatBox = document.getElementById("chatBox");
+    chatBox.innerHTML += `<p> ${dataMessage.username} - ${dataMessage.newMessage} </p>`
+  });
+</script>
